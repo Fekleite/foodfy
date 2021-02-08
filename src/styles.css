@@ -145,3 +145,39 @@ footer p {
 
   font-size: 14px;
 }
+
+/* About */
+
+.about h1 {
+  margin: 20px 0;
+
+  color: #111111;
+
+  font-size: 24px;
+}
+
+.about p,
+.start p,
+.our-recipes p {
+  margin-bottom: 20px;
+
+  color: #444444;
+
+  font-size: 18px;
+  line-height: 28px;
+  text-align: justify;
+}
+
+.about p:last-child,
+.start p:last-child {
+  margin-bottom: 0;
+}
+
+.start h2,
+.our-recipes h2 {
+  margin: 30px 0 20px 0;
+
+  color: #111111;
+
+  font-size: 20px;
+}
