@@ -10,8 +10,9 @@
 /* Global */
 
 body {
-  font-family: "Roboto", sans-serif;
   color: #111111;
+
+  font-family: "Roboto", sans-serif;
 }
 
 .container {
@@ -180,4 +181,89 @@ footer p {
   color: #111111;
 
   font-size: 20px;
+}
+
+/* Recipes */
+
+.page-recipes {
+  margin-top: 20px;
+}
+
+/* Modal */
+
+.modal__overlay {
+  width: 100%;
+  height: 100%;
+
+  position: fixed;
+  top: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+
+  visibility: hidden;
+}
+
+.active {
+  opacity: 1;
+
+  visibility: visible;
+}
+
+.modal {
+  width: 660px;
+  height: 413px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 30px;
+  border-radius: 16px;
+
+  background: #ffffff;
+}
+
+.modal img {
+  width: 100%;
+
+  margin-bottom: 20px;
+  border-radius: 15px;
+}
+
+.modal h2 {
+  margin-bottom: 5px;
+
+  color: #111111;
+
+  font-size: 24px;
+  text-align: center;
+}
+
+.modal p {
+  margin-bottom: 60px;
+  
+  color: #777777;
+
+  font-size: 18px;
+  text-align: center;
+}
+
+.modal a {
+  color: #999999;
+  
+  font-size: 16px;
+  text-decoration: none;
+
+  cursor: pointer;
+  
+  transition: filter 0.3s ease-in-out;
+}
+
+.modal a:hover {
+  filter: brightness(90%);
 }
