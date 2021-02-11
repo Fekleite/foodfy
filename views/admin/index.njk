@@ -1,0 +1,31 @@
+{% extends "layout-admin.njk" %}
+
+{% block content %}
+  <main>
+
+    <h2 class="title">Gerenciar receitas</h2>
+
+    <section class="recipes__content page-admin">
+
+      {% for recipe in recipes %}
+        <div class="recipe page-admin">
+          <div class="recipe__image page-admin">
+            <img src="{{recipe.image}}" alt="Imagem de {{recipe.title}}"/>
+          </div>
+          <div>
+            <h3>{{recipe.title}}</h3>
+            <p>{{recipe.author}}</p>
+            <a class="recipe__link">Visualizar</a>
+          </div>
+        </div>
+      {% endfor %}
+
+    </section>
+
+    <a href="/admin/recipes/create" class="recipe__link--add">
+      <div>+</div>
+      Nova receita
+    </a>
+
+  </main>
+{% endblock content %}
