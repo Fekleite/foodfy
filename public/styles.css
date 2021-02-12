@@ -393,3 +393,105 @@ footer p {
   
   background: #ffffff3d;
 }
+
+/* Create */
+
+.form {
+  margin-top: 20px;
+}
+
+.form__header {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 30px;
+}
+
+.form__save {
+  padding: 9px 20px;
+  border-radius: 4px;
+
+  background: #6558c3;
+  color: #ffffff;
+  
+  
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.form__header h3 {
+  color: #111111;
+
+  font-size: 24px;
+}
+
+.form__item {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 30px;
+}
+
+.form__item label {
+  margin-bottom: 10px;
+
+  color: #111111;
+
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.form__item input,
+.form__item textarea {
+  height: 48px;
+
+  background-color: #ffffff;
+
+  padding: 0 16px;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  
+  font-size: 16px;
+
+  outline: none;
+}
+
+.form__item textarea {
+  min-height: 96px;
+
+  padding: 16px;
+
+  resize: vertical;
+}
+
+.form__input--ingredient,
+.form__input--preparation {
+  margin-top: 10px;
+}
+
+.form__input--ingredient input,
+.form__input--preparation  input {
+  width: 100%;
+}
+
+.form__button--add {
+  width: fit-content;
+
+  margin-top: 15px;
+
+  background: transparent;
+  color: #6558c3;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  cursor: pointer;
+}

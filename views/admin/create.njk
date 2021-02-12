@@ -1,0 +1,86 @@
+{% extends "layout-admin.njk" %}
+
+{% block head %}
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+{% endblock head %}
+
+{% block content %}
+  <main>
+    <section class="form">
+      <form action="/admin/recipes" method="post">
+        <div class="form__header">
+          <h3>Criando receita</h3>
+          <button type="submit" class="form__save">Salvar Receita</button>
+        </div>
+
+        <div class="form__item">
+          <label for="image">Imagem da receita</label>
+          <input type="url" name="image" id="image" placeholder="http://">
+        </div>
+
+        <div class="form__item">
+          <label for="title">Título da receita</label>
+          <input type="text" name="title" id="title" placeholder="Ex: Triplo bacon burger">
+        </div>
+
+        <div class="form__item">
+          <label for="author">Autor</label>
+          <input type="text" name="author" id="author" placeholder="Nome do autor da receita">
+        </div>
+
+        <div class="form__item">
+          <div id="form__ingredients">
+            <label>Ingredientes</label>
+            <div class="form__input--ingredient">
+              <input type="text" name="ingredients[]" placeholder="Ex: 300 g de bacon moído">
+            </div>
+          </div>
+          <a class="form__button--add" id="button__add--ing">Adicionar novo ingrediente</a>
+        </div>
+
+        <div class="form__item">
+          <div id="form__preparation">
+            <label>Modo de preparo</label>
+            <div class="form__input--preparation">
+              <input type="text" name="preparation[]" placeholder="Ex: Retire do forno e despeje o molho de tomate.">
+            </div>
+          </div>
+          <a class="form__button--add" id="button__add--prep">Adicionar novo passo</a>
+        </div>
+
+        <div class="form__item">
+          <label for="information">Informações adicionais</label>
+          <textarea name="information" id="information" cols="30" rows="10" placeholder="Ex: Pizza de liquidificador é uma receita deliciosa e super simples de preparar..."></textarea>
+        </div>
+
+      </form>
+    </section>
+  </main>
+
+  <script>
+    function addNewField(containerId, fieldClass) {
+      const container = document.querySelector(containerId);
+      const field = document.querySelectorAll(fieldClass);
+
+      console.log({container})
+
+      const newField = field[field.length - 1].cloneNode(true);
+
+      if (newField.children[0].value == "") {
+        return;
+      }
+        
+      newField.children[0].value = "";
+
+      container.appendChild(newField);
+    }
+
+    document
+      .querySelector("#button__add--ing")
+      .addEventListener("click", () => addNewField("#form__ingredients", ".form__input--ingredient"));
+
+    document
+      .querySelector("#button__add--prep")
+      .addEventListener("click", () => addNewField("#form__preparation", ".form__input--preparation"));
+  </script>
+{% endblock content %}
