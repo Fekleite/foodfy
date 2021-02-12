@@ -89,11 +89,7 @@ routes.put("/admin/recipes", (req, res) => {
 
   if (!foundRecipe || foundRecipe.length === 0) return res.send("Recipe not found!");
 
-  const recipe = {
-    ...foundRecipe,
-    ...req.body,
-    id: numberId,
-  };
+  const recipe = { ...req.body }
 
   data.recipes[numberId - 1] = recipe;
 
