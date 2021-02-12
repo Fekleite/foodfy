@@ -154,6 +154,10 @@ footer p {
   font-size: 14px;
 }
 
+.recipe__link--hidden {
+  text-decoration: none;
+}
+
 /* About */
 
 .about h1 {

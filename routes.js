@@ -19,11 +19,14 @@ routes.get("/recipes", (req, res) => {
   return res.render("user/recipes", { recipes: data.recipes });
 });
 
-routes.get("/recipes/:index", (req, res) => {
-  const recipeIndex = req.params.index;
-  const recipe = data.recipes[recipeIndex];
+routes.get("/recipes/:id", (req, res) => {
+  const recipeId = Number(req.params.id);
 
-  return res.render("user/detail", { recipe });
+  const foundRecipe = data.recipes.filter((recipe) => recipe.id === recipeId);
+
+  if (!foundRecipe || foundRecipe.length === 0) return res.send("Recipe not found!");
+
+  return res.render("user/detail", { recipe: foundRecipe[0] });
 });
 
 // Admin routes
@@ -58,43 +61,41 @@ routes.post("/admin/recipes", (req, res) => {
   });
 });
 
-routes.get("/admin/recipes/:index", (req, res) => {
-  const recipeIndex = req.params.index - 1;
-  const recipe = data.recipes[recipeIndex];
+routes.get("/admin/recipes/:id", (req, res) => {
+  const recipeId = Number(req.params.id);
 
-  return res.render("admin/show", { recipe });
+  const foundRecipe = data.recipes.filter((recipe) => recipe.id === recipeId);
+
+  if (!foundRecipe || foundRecipe.length === 0) return res.send("Recipe not found!");
+
+  return res.render("admin/show", { recipe: foundRecipe[0] });
 });
 
-routes.get("/admin/recipes/:index/edit", (req, res) => {
-  const recipeIndex = req.params.index;
-  const tIndex = Number(recipeIndex) - 1;
-  const recipe = data.recipes[tIndex];
+routes.get("/admin/recipes/:id/edit", (req, res) => {
+  const recipeId = Number(req.params.id);
 
-  if (!recipe) return res.send("Recipe not found!");
+  const foundRecipe = data.recipes.filter((recipe) => recipe.id === recipeId);
 
-  return res.render("admin/edit", { recipe });
+  if (!foundRecipe || foundRecipe.length === 0) return res.send("Recipe not found!");
+
+  return res.render("admin/edit", { recipe: foundRecipe[0] });
 });
 
 routes.put("/admin/recipes", (req, res) => {
   const { id } = req.body;
-  let index = 0;
+  const numberId = Number(id);
 
-  const foundRecipe = data.recipes.find((recipe, foundIndex) => {
-    if (recipe.id == id) {
-      index = foundIndex;
-      return true;
-    }
-  });
+  const foundRecipe = data.recipes.filter((recipe) => recipe.id === numberId);
 
-  if (!foundRecipe) return res.send("Recipe not found!");
+  if (!foundRecipe || foundRecipe.length === 0) return res.send("Recipe not found!");
 
   const recipe = {
     ...foundRecipe,
     ...req.body,
-    id: Number(req.body.id),
+    id: numberId,
   };
 
-  data.recipes[index] = recipe;
+  data.recipes[numberId - 1] = recipe;
 
   fs.writeFile("data.json", JSON.stringify(data, null, 2), (err) => {
     if (err) return res.send("Write file error!");
@@ -105,17 +106,16 @@ routes.put("/admin/recipes", (req, res) => {
 
 routes.delete("/admin/recipes", (req, res) => {
   const { id } = req.body;
+  const numberId = Number(id);
 
-  const filteredRecipes = data.recipes.filter((recipe) => {
-    return recipe.id != id;
-  });
+  const filteredRecipes = data.recipes.filter((recipe) => recipe.id !== numberId );
 
   data.recipes = filteredRecipes;
 
   fs.writeFile("data.json", JSON.stringify(data, null, 2), (err) => {
     if (err) return res.send("Write file error!");
 
-    return res.redirect(`/admin/recipes`);
+    return res.redirect("/admin/recipes");
   });
 });
 
