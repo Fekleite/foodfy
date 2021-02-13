@@ -1,19 +1,11 @@
 const express = require("express");
-const fs = require("fs");
+
+const GlobalController = require("./app/controllers/GlobalController");
 
 const routes = express.Router();
 
-const data = require("./data.json");
-
-// User routes
-
-routes.get("/", (req, res) => {
-  return res.render("user/home", { recipes: data.recipes });
-});
-
-routes.get("/about", (req, res) => {
-  return res.render("user/about");
-});
+routes.get("/", GlobalController.index );
+routes.get("/about", GlobalController.about);
 
 routes.get("/recipes", (req, res) => {
   return res.render("user/recipes", { recipes: data.recipes });
