@@ -1,0 +1,56 @@
+{% extends "layout-admin.njk" %}
+
+{% block head %}
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+{% endblock head %}
+
+{% block content %}
+  <main>
+    <section class="form">
+      <form action="/admin/chefs?_method=PUT" method="post">
+        <div class="form__header">
+          <h3>Editar chef</h3>
+
+          <button type="submit" class="form__save">Salvar chef</button>
+        </div>
+
+        <input type="hidden" name="id" value="{{chef.id}}">
+
+        <div class="form__item">
+          <label for="name">Nome</label>
+          <input type="text" name="name" id="name" placeholder="Nome do chef" value="{{chef.name}}">
+        </div>
+
+        <div class="form__item">
+          <label for="image">Avatar</label>
+          <div class="photos__container">
+            <div id="photos__upload">
+              <input type="file" name="photos" id="photos__input" accept="image/*" onchange="PhotosUpload.handleFileInput(event)" multiple="multiple">
+              <div class="photos__add">
+                <i class="material-icons">
+                  add
+                </i>
+              </div>
+            </div>
+
+            <div id="photos__preview">
+              {% if files %}
+                {% for image in files %}
+                  <div class="photo" id="{{image.id}}">
+                    <img src="{{image.src}}" alt="{{image.name}}">
+                    <i class="material-icons" onclick="PhotosUpload.removeOldPhoto(event)">
+                      close
+                    </i>
+                  </div>
+                {% endfor %}
+                <input type="hidden" name="removed_files">
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </section>
+  </main>
+
+{% endblock content %}
