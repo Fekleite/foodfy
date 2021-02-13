@@ -17,6 +17,10 @@ module.exports = {
 
     return db.query(query, values);
   },
+
+  find(id) {
+    return db.query(`SELECT * FROM files WHERE recipe_id = $1`, [id]);
+  },
   
   async delete(id) {
     try {

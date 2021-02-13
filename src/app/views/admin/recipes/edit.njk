@@ -18,7 +18,30 @@
 
         <div class="form__item">
           <label for="image">Imagem da receita</label>
-          <input type="url" name="image" id="image" placeholder="http://" value="{{recipe.image}}">
+          <div class="photos__container">
+            <div id="photos__upload">
+              <input type="file" name="photos" id="photos__input" accept="image/*" onchange="PhotosUpload.handleFileInput(event)" multiple="multiple">
+              <div class="photos__add">
+                <i class="material-icons">
+                  add
+                </i>
+              </div>
+            </div>
+
+            <div id="photos__preview">
+              {% if files %}
+                {% for image in files %}
+                  <div class="photo" id="{{image.id}}">
+                    <img src="{{image.src}}" alt="{{image.name}}">
+                    <i class="material-icons" onclick="PhotosUpload.removeOldPhoto(event)">
+                      close
+                    </i>
+                  </div>
+                {% endfor %}
+                <input type="hidden" name="removed_files">
+              {% endif %}
+            </div>
+          </div>
         </div>
 
         <div class="form__item">
@@ -28,7 +51,11 @@
 
         <div class="form__item">
           <label for="author">Autor</label>
-          <input type="text" name="author" id="author" placeholder="Nome do autor da receita" value="{{recipe.author}}">
+          <select name="author" id="author">
+            {% for chef in chefs %}
+              <option value="{{chef.id}}" {% if chef.id == recipe.chef_id %} selected="selected" {% endif %} >{{chef.name}}</option>
+            {% endfor %}
+          </select>
         </div>
 
         <div class="form__item">

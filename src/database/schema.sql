@@ -19,16 +19,18 @@ CREATE TABLE recipes (
   FOREIGN KEY(chef_id) REFERENCES chefs(id)
 );
 
-CREATE TABLE files (
-  id SERIAL PRIMARY KEY,
-  name TEXT,
-  path TEXT NOT NULL
-);
-
 CREATE TABLE recipe_files (
   id SERIAL PRIMARY KEY,
+  name TEXT,
+  path TEXT NOT NULL,
   recipe_id INTEGER,
-  file_id INTEGER,
   FOREIGN KEY(recipe_id) REFERENCES recipes(id),
-  FOREIGN KEY(file_id) REFERENCES files(id)
+);
+
+CREATE TABLE chef_files (
+  id SERIAL PRIMARY KEY,
+  name TEXT,
+  path TEXT NOT NULL,
+  chef_id INTEGER,
+  FOREIGN KEY(chef_id) REFERENCES chefs(id),
 );
