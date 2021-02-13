@@ -66,7 +66,7 @@ module.exports = {
   },
 
   files(id) {
-    return db.query(`SELECT * FROM files WHERE recipe_id = $1`, [id]);
+    return db.query(`SELECT * FROM recipe_files WHERE recipe_id = $1`, [id]);
   },
 
   search(filter) {

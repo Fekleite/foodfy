@@ -24,6 +24,9 @@ module.exports = {
 
     const recipesPromise = recipes.map(async (recipe) => {
       recipe.img = await getImage(recipe.id);
+      
+      const recipeAuthor = await Chef.find(recipe.chef_id)
+      recipe.author = recipeAuthor.rows[0].name;
 
       return recipe;
     });
@@ -42,7 +45,6 @@ module.exports = {
     if (!recipe) return res.send("Recipe not found!");
 
     result = await Chef.find(recipe.chef_id);
-
     const chef = result.rows[0];
 
     result = await Recipe.files(recipe.id);
@@ -81,7 +83,7 @@ module.exports = {
     const recipeId = result.rows[0].id;
 
     const filesPromise = req.files.map((file) => {
-      File.create({ ...file, recipe_id: recipeId });
+      File.createImageRecipe({ ...file, recipe_id: recipeId });
     });
 
     await Promise.all(filesPromise);
@@ -98,8 +100,15 @@ module.exports = {
     result = await Chef.all();
     const chefs = result.rows;
 
-    result = await File.find(id);
-    const files = result.rows;
+    result = await Recipe.files(recipe.id);
+
+    const files = result.rows.map((file) => ({
+      ...file,
+      src: `${req.protocol}://${req.headers.host}${file.path.replace(
+        "public",
+        ""
+      )}`,
+    }));
 
     return res.render("admin/recipes/edit", { recipe, chefs, files });
   },

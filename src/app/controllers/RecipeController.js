@@ -8,7 +8,31 @@ module.exports = {
 
     if (!recipes) return res.send("Recipes not found!");
 
-    return res.render("user/recipes", { recipes });
+    async function getImage(recipeId) {
+      let result = await Recipe.files(recipeId);
+
+      const files = result.rows.map((file) => {
+        return `${req.protocol}://${req.headers.host}${file.path.replace(
+          "public",
+          ""
+        )}`;
+      });
+
+      return files[0];
+    }
+
+    const recipesPromise = recipes.map(async (recipe) => {
+      recipe.img = await getImage(recipe.id);
+      
+      const recipeAuthor = await Chef.find(recipe.chef_id)
+      recipe.author = recipeAuthor.rows[0].name;
+
+      return recipe;
+    });
+
+    const lastAdded = await Promise.all(recipesPromise);
+
+    return res.render("user/recipes", { recipes: lastAdded });
   },
 
   async show(req, res) {
@@ -17,9 +41,19 @@ module.exports = {
     let result = await Recipe.find(id);
     const recipe = result.rows[0];
 
-    results = await Chef.find(recipe.chef_id);
+    result = await Chef.find(recipe.chef_id);
     const chef = result.rows[0];
 
-    return res.render("user/detail", { recipe, chef });
+    result = await Recipe.files(recipe.id);
+
+    const files = result.rows.map((file) => ({
+      ...file,
+      src: `${req.protocol}://${req.headers.host}${file.path.replace(
+        "public",
+        ""
+      )}`,
+    }));
+
+    return res.render("user/detail", { recipe, chef, files });
   },
 };

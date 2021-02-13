@@ -1,15 +1,13 @@
 CREATE DATABASE foodfy;
 
 CREATE TABLE chefs (
-  id INTEGER PRIMARY KEY UNIQUE,
+  id SERIAL PRIMARY KEY UNIQUE,
   name TEXT,
-  file_id INTEGER,
-  created_at TIMESTAMP DEFAULT (now()),
-  FOREIGN KEY(id) REFERENCES files(id)
+  created_at TIMESTAMP DEFAULT (now())
 );
 
 CREATE TABLE recipes (
-  id INTEGER PRIMARY KEY UNIQUE,
+  id SERIAL PRIMARY KEY UNIQUE,
   chef_id INTEGER,
   title TEXT,
   ingredients TEXT[],
@@ -24,7 +22,7 @@ CREATE TABLE recipe_files (
   name TEXT,
   path TEXT NOT NULL,
   recipe_id INTEGER,
-  FOREIGN KEY(recipe_id) REFERENCES recipes(id),
+  FOREIGN KEY(recipe_id) REFERENCES recipes(id)
 );
 
 CREATE TABLE chef_files (
@@ -32,5 +30,5 @@ CREATE TABLE chef_files (
   name TEXT,
   path TEXT NOT NULL,
   chef_id INTEGER,
-  FOREIGN KEY(chef_id) REFERENCES chefs(id),
+  FOREIGN KEY(chef_id) REFERENCES chefs(id)
 );

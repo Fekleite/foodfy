@@ -3,9 +3,9 @@ const fs = require("fs");
 const db = require("../../config/db");
 
 module.exports = {
-  create({ filename, path, recipe_id }) {
+  createImageRecipe({ filename, path, recipe_id }) {
     const query = `
-      INSERT INTO files (
+      INSERT INTO recipe_files (
         name,
         path,
         recipe_id
@@ -18,18 +18,18 @@ module.exports = {
     return db.query(query, values);
   },
 
-  find(id) {
-    return db.query(`SELECT * FROM files WHERE recipe_id = $1`, [id]);
+  findImageRecipe(id) {
+    return db.query(`SELECT * FROM recipe_files WHERE recipe_id = $1`, [id]);
   },
   
-  async delete(id) {
+  async deleteImageRecipe(id) {
     try {
-      const result = await db.query(`SELECT * FROM files WHERE id = $1`, [id]);
+      const result = await db.query(`SELECT * FROM recipe_files WHERE id = $1`, [id]);
       const file = result.rows[0];
 
       fs.unlinkSync(file.path);
 
-      return db.query(`DELETE FROM files WHERE id = $1`, [id]);
+      return db.query(`DELETE FROM recipe_files WHERE id = $1`, [id]);
     } catch (error) {
       console.error(error);
     }
