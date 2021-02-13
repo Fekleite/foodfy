@@ -34,4 +34,36 @@ module.exports = {
       console.error(error);
     }
   },
+
+  createImageChef({ filename, path, chef_id }) {
+    const query = `
+      INSERT INTO chef_files (
+        name,
+        path,
+        chef_id
+      ) VALUES ($1, $2, $3)
+      RETURNING id
+    `;
+
+    const values = [filename, path, chef_id];
+
+    return db.query(query, values);
+  },
+
+  findImageChef(id) {
+    return db.query(`SELECT * FROM chef_files WHERE chef_id = $1`, [id]);
+  },
+
+  async deleteImageChef(id) {
+    try {
+      const result = await db.query(`SELECT * FROM chef_files WHERE id = $1`, [id]);
+      const file = result.rows[0];
+
+      fs.unlinkSync(file.path);
+
+      return db.query(`DELETE FROM chef_files WHERE id = $1`, [id]);
+    } catch (error) {
+      console.error(error);
+    }
+  },
 };

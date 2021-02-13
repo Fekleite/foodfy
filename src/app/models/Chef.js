@@ -12,13 +12,12 @@ module.exports = {
   create(data) {
     const query = `
     INSERT INTO chefs (
-      name,
-      avatar_url
-    ) VALUES ($1, $2)
+      name
+    ) VALUES ($1)
     RETURNING id
   `;
 
-    const values = [data.name, data.image];
+    const values = [data.name];
 
     return db.query(query, values);
   },
@@ -27,17 +26,20 @@ module.exports = {
     const query = `
     UPDATE chefs SET
       name=($1),
-      avatar_url=($2)
-    WHERE id=$3
+    WHERE id=$2
   `;
 
-    const values = [data.name, data.image, data.id];
+    const values = [data.name, data.id];
 
     return db.query(query, values);
   },
 
   delete(id) {
     return db.query(`DELETE FROM chefs WHERE id = $1`, [id]);
+  },
+
+  files(id) {
+    return db.query(`SELECT * FROM chef_files WHERE chef_id = $1`, [id]);
   },
   
   getTotalRecipes() {
