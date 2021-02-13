@@ -1,25 +1,15 @@
 const express = require("express");
 
 const GlobalController = require("./app/controllers/GlobalController");
+const RecipeController = require("./app/controllers/RecipeController");
 
 const routes = express.Router();
 
 routes.get("/", GlobalController.index );
 routes.get("/about", GlobalController.about);
 
-routes.get("/recipes", (req, res) => {
-  return res.render("user/recipes", { recipes: data.recipes });
-});
-
-routes.get("/recipes/:id", (req, res) => {
-  const recipeId = Number(req.params.id);
-
-  const foundRecipe = data.recipes.filter((recipe) => recipe.id === recipeId);
-
-  if (!foundRecipe || foundRecipe.length === 0) return res.send("Recipe not found!");
-
-  return res.render("user/detail", { recipe: foundRecipe[0] });
-});
+routes.get("/recipes", RecipeController.index);
+routes.get("/recipes/:id", RecipeController.show);
 
 // Admin routes
 
