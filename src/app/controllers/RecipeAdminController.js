@@ -117,14 +117,32 @@ module.exports = {
     const keys = Object.keys(req.body);
 
     keys.map((key) => {
-      if (req.body[key] === "") {
+      if (req.body[key] === "" && key != "removed_files") {
         return res.send("Please, fill all fields!");
       }
     });
 
+    if (req.files.length !== 0) {
+      const newFilesPromise = req.files.map(file => File.createImageRecipe({...file, recipe_id: req.body.id}));
+
+      await Promise.all(newFilesPromise);
+    }
+
+    if (req.body.removed_files) {
+      const removedFiles = req.body.removed_files.split(",");
+      const lastIndex = removedFiles.length - 1;
+      removedFiles.splice(lastIndex, 1);
+
+      const removedFilesPromise = removedFiles.map(id => File.deleteImageRecipe(id));
+
+      await Promise.all(removedFilesPromise);
+    }
+
     await Recipe.update(req.body);
 
-    return res.redirect(`/admin/recipes/${req.body.id}`);
+    const recipeId = req.body.id;
+
+    return res.redirect(`/admin/recipes/${recipeId}`);
   },
   
   async delete(req, res) {

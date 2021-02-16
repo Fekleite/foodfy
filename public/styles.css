@@ -209,10 +209,12 @@ footer p {
 
 .detail__image {
   margin-bottom: 50px;
+  width: 100%;
 }
 
 .detail__image img {
   border-radius: 15px;
+  width: 100%;
 }
 
 .detail h2 {
