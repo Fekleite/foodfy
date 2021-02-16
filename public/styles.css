@@ -260,6 +260,25 @@ footer p {
   font-size: 24px;
 }
 
+.ingredients__list,
+.preparation__list {
+  height: 0;
+
+  visibility: hidden;
+  opacity: 0;
+
+  overflow: hidden;
+
+  transition: all 0.5s;
+}
+
+.accordion {
+  height: 100%;
+
+  visibility: visible;
+  opacity: 1;
+}
+
 .ingredients ul,
 .preparation ul {
   padding-left: 24px;

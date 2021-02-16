@@ -148,7 +148,7 @@ const AR_D = "arrow_drop_down";
 const AR_U = "arrow_drop_up";
 
 function handleArrow(element, item) {
-  element.classList.toggle("hidden");
+  element.classList.toggle("accordion");
 
   item.innerHTML === AR_D ? item.innerHTML = AR_U : item.innerHTML = AR_D;
 }
