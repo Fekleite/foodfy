@@ -2,6 +2,7 @@ const express = require("express");
 
 const GlobalController = require("./app/controllers/GlobalController");
 const RecipeController = require("./app/controllers/RecipeController");
+const SearchController = require("./app/controllers/SearchController");
 const ChefController = require("./app/controllers/ChefController");
 const RecipeAdminController = require("./app/controllers/RecipeAdminController");
 const ChefAdminController = require("./app/controllers/ChefAdminController");
