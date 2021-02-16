@@ -27,6 +27,11 @@
           <a href="/recipes">Receitas</a>
           <a href="/chefs">Chefs</a>
         </nav>
+
+        <form action="/results" method="get" class="searchbar" >
+          <input type="text" name="filter" placeholder="Buscar uma receita" {% if filter %} value="{{filter}}" {% endif %}>
+          <button>Buscar</button>
+        </form>
       </header>
 
       {% block content %}{% endblock content %}
