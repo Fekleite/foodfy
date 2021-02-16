@@ -22,7 +22,7 @@ CREATE TABLE recipe_files (
   name TEXT,
   path TEXT NOT NULL,
   recipe_id INTEGER,
-  FOREIGN KEY(recipe_id) REFERENCES recipes(id)
+  FOREIGN KEY(recipe_id) REFERENCES recipes(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE chef_files (
@@ -30,5 +30,5 @@ CREATE TABLE chef_files (
   name TEXT,
   path TEXT NOT NULL,
   chef_id INTEGER,
-  FOREIGN KEY(chef_id) REFERENCES chefs(id)
+  FOREIGN KEY(chef_id) REFERENCES chefs(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
