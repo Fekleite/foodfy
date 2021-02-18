@@ -123,7 +123,7 @@ module.exports = {
     });
 
     if (req.files.length !== 0) {
-      const newFilesPromise = req.files.map(file => File.createImageRecipe({...file, chef_id: req.body.id}));
+      const newFilesPromise = req.files.map(file => File.createImageRecipe({...file, recipe_id: req.body.id}));
 
       await Promise.all(newFilesPromise);
     }

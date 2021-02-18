@@ -22,13 +22,13 @@ module.exports = {
       return files[0];
     }
 
-    const recipesPromise = chefs.map(async (chef) => {
+    const chefsPromise = chefs.map(async (chef) => {
       chef.avatar = await getImage(chef.id);
 
       return chef;
     });
 
-    const lastAdded = await Promise.all(recipesPromise);
+    const lastAdded = await Promise.all(chefsPromise);
 
     return res.render("admin/chefs/index", { chefs: lastAdded });
   },
@@ -141,7 +141,7 @@ module.exports = {
     });
 
     if (req.files.length !== 0) {
-      const newFilesPromise = req.files.map(file => File.createImageChef({...file, recipe_id: req.body.id}));
+      const newFilesPromise = req.files.map(file => File.createImageChef({...file, chef_id: req.body.id}));
 
       await Promise.all(newFilesPromise);
     }
