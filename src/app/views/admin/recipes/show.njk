@@ -62,7 +62,7 @@
           <h3>Ingredientes</h3>
 
         </div>
-        <ul>
+        <ul class="ingredients__list accordion">
           {% for item in recipe.ingredients %}
             <li>{{item}}</li>
           {% endfor %}
@@ -75,7 +75,7 @@
 
         </div>
 
-        <ul>
+        <ul class="preparation__list accordion">
           {% for item in recipe.preparation %}
             <li>{{item}}</li>
           {% endfor %}
@@ -89,7 +89,7 @@
 
           </div>
 
-          <p >{{recipe.information}}</p>
+          <p class="information__text accordion">{{recipe.information}}</p>
         </div>
       {% endif %}
 

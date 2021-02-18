@@ -47,7 +47,7 @@
         <div class="ingredients__header">
           <h3>Ingredientes</h3>
 
-          <span class="material-icons" id="ingredientsAccordion">
+          <span class="material-icons" id="ing" onclick="Accordion.openAndCloseIngredients(event)">
             arrow_drop_up
           </span>
         </div>
@@ -63,7 +63,7 @@
         <div class="preparation__header">
           <h3>Modo de preparo</h3>
 
-          <span class="material-icons" id="preparationAccordion">
+          <span class="material-icons" id="prep" onclick="Accordion.openAndClosePreparations(event)">
             arrow_drop_up
           </span>
         </div>
@@ -80,12 +80,12 @@
           <div class="information__header">
             <h3>Informações adicionais</h3>
 
-            <span class="material-icons" id="informationAccordion">
+            <span class="material-icons" id="info" onclick="Accordion.openAndCloseInforations(event)">
               arrow_drop_up
             </span>
           </div>
 
-          <p >{{recipe.information}}</p>
+          <p class="information__text accordion">{{recipe.information}}</p>
         </div>
       {% endif %}
     </section>

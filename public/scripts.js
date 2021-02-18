@@ -159,49 +159,36 @@ const Lightbox = {
   }
 }
 
-// GERAl
+// ACCORDION
 
-const recipes = document.querySelectorAll(".recipe");
+const Accordion = {
+  ingredients: document.querySelector(".ingredients__list"),
+  preparation: document.querySelector(".preparation__list"),
+  information: document.querySelector(".information__text"),
+  AR_D: "arrow_drop_down",
+  AR_U: "arrow_drop_up",
 
-for (let i = 0; i < recipes.length; i++) {
-  const recipe = recipes[i];
+  handleArrow(element, item) {
+    element.classList.toggle("accordion");
 
-  recipe.addEventListener("click", () => {
-    window.location.href = `/recipes/${i}`;
-  });
-}
+    item.innerHTML === Accordion.AR_D ? item.innerHTML = Accordion.AR_U : item.innerHTML = Accordion.AR_D;
+  },
 
-const ingredients = document.querySelector(".ingredients ul");
-const preparation = document.querySelector(".preparation ul");
-const information = document.querySelector(".information p");
+  openAndCloseIngredients(e) {
+    const { target } = e;
 
-const ingredientsAccordion = document.querySelector("#ingredientsAccordion");
-const preparationAccordion = document.querySelector("#preparationAccordion");
-const informationAccordion = document.querySelector("#informationAccordion");
+    Accordion.handleArrow(Accordion.ingredients, target);
+  },
 
-const AR_D = "arrow_drop_down";
-const AR_U = "arrow_drop_up";
+  openAndClosePreparations(e) {
+    const { target } = e;
 
-function handleArrow(element, item) {
-  element.classList.toggle("accordion");
+    Accordion.handleArrow(Accordion.preparation, target);
+  },
 
-  item.innerHTML === AR_D ? item.innerHTML = AR_U : item.innerHTML = AR_D;
-}
+  openAndCloseInforations(e) {
+    const { target } = e;
 
-if (ingredients !== null && ingredientsAccordion !== null) {
-  ingredientsAccordion.addEventListener("click", () => {
-    handleArrow(ingredients, ingredientsAccordion);
-  });
-}
-
-if (preparation !== null && preparationAccordion !== null) {
-  preparationAccordion.addEventListener("click", () => {
-    handleArrow(preparation, preparationAccordion);
-  });
-}
-
-if (information !== null && informationAccordion !== null) {
-  informationAccordion.addEventListener("click", () => {
-    handleArrow(information, informationAccordion);
-  });
+    Accordion.handleArrow(Accordion.information, target);
+  }
 }
