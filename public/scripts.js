@@ -124,6 +124,41 @@ const PhotosUpload = {
   },
 };
 
+// GALLERY
+
+const ImageGallery = {
+  highlight: document.querySelector(".gallery__highlight > img"),
+  previews: document.querySelectorAll(".gallery__preview img"),
+
+  setImage(e) {
+    const { target } = e;
+
+    ImageGallery.previews.forEach(preview => preview.classList.remove("active"));
+    target.classList.add("active");
+
+    ImageGallery.highlight.src = target.src;
+    Lightbox.image.src = target.src;
+  }
+}
+
+// LIGHTBOX
+
+const Lightbox = {
+  target: document.querySelector(".lightbox"),
+  image: document.querySelector(".lightbox img"),
+  closeButton: document.querySelector(".lightbox__button--close"),
+
+  open() {
+    Lightbox.target.style.opacity = 1;
+    Lightbox.target.style.top = 0;
+  },
+
+  close() {
+    Lightbox.target.style.opacity = 0;
+    Lightbox.target.style.top = "-100%";
+  }
+}
+
 // GERAl
 
 const recipes = document.querySelectorAll(".recipe");
