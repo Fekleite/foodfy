@@ -1,6 +1,7 @@
 const express = require("express");
 
-const GlobalController = require("./app/controllers/GlobalController");
+const HomeController = require("./app/controllers/HomeController");
+const InstitutionalController = require("./app/controllers/InstitutionalController");
 const RecipeController = require("./app/controllers/RecipeController");
 const SearchController = require("./app/controllers/SearchController");
 const ChefController = require("./app/controllers/ChefController");
@@ -11,13 +12,17 @@ const multer = require("./app/middlewares/multer");
 
 const routes = express.Router();
 
-routes.get("/", GlobalController.index);
-routes.get("/about", GlobalController.about);
+routes.get("/", HomeController.index);
+
+routes.get("/about", InstitutionalController.about);
+
+routes.get("/results", SearchController.index);
 
 routes.get("/recipes", RecipeController.index);
 routes.get("/recipes/:id", RecipeController.show);
 
 routes.get("/chefs", ChefController.index);
+routes.get("/chefs/:id", ChefController.show);
 
 routes.get("/admin/recipes", RecipeAdminController.index);
 routes.get("/admin/recipes/create", RecipeAdminController.create);
@@ -36,7 +41,5 @@ routes.get("/admin/chefs/:id/edit", ChefAdminController.edit);
 routes.post("/admin/chefs", multer.array("photos", 1), ChefAdminController.post);
 routes.put("/admin/chefs", multer.array("photos", 1), ChefAdminController.put);
 routes.delete("/admin/chefs", ChefAdminController.delete);
-
-routes.get("/results", SearchController.index);
 
 module.exports = routes;

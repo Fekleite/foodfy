@@ -1,0 +1,44 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+{% endblock head %}
+
+{% block content %}
+  <main>
+    <section class="detail">
+      <div class="detail__image-chef">
+        <img src="{{files[0].src}}" alt="Imagem de {{files[0].name}}"/>
+      </div>
+
+      <h2>{{chef.name}}</h2>
+
+    </section>
+
+    {% if recipes.length != 0 %}
+
+      <h2 class="title">Receitas</h2>
+
+      <section class="recipes__content page-admin">
+
+        {% for recipe in recipes %}
+          <div class="recipe__item page-admin">
+            <div class="recipe__image page-admin">
+              {% for file in files %}
+                <img src="{{recipe.img}}" alt="Imagem de {{recipe.title}}"/>
+              {% endfor %}
+            </div>
+
+            <div>
+              <h3>{{recipe.title}}</h3>
+              <p>{{recipe.author}}</p>
+              <a href="/admin/recipes/{{recipe.id}}" class="recipe__link">Visualizar</a>
+            </div>
+          </div>
+        {% endfor %}
+      </section>
+
+    {% endif %}
+
+  </main>
+{% endblock content %}
