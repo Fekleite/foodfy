@@ -33,9 +33,5 @@ module.exports = {
     const lastAdded = await Promise.all(recipesPromise);
 
     return res.render("user/home", { recipes: lastAdded.slice(0, 3) });
-  },
-
-  about(req, res) {
-    return res.render("user/about");
-  },
+  }
 };
