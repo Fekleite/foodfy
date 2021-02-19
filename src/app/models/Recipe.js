@@ -70,7 +70,7 @@ module.exports = {
   search(filter) {
     const query = `
       SELECT * FROM recipes 
-      WHERE recipes.title ILIKE '%${filter}%'
+      WHERE recipes.title ILIKE '%${filter}%' ORDER BY updated_at DESC
     `;
 
     return db.query(query);

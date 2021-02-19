@@ -30,8 +30,9 @@ module.exports = {
       return recipe;
     });
 
-    const lastAdded = await Promise.all(recipesPromise);
+    let lastAdded = await Promise.all(recipesPromise);
+    lastAdded = lastAdded.filter((recipe, index) => index > 2 ? false : true);
 
-    return res.render("user/home", { recipes: lastAdded.slice(0, 3) });
+    return res.render("user/home", { recipes: lastAdded });
   }
 };

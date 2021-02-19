@@ -28,9 +28,9 @@ module.exports = {
       return chef;
     });
 
-    const lastAdded = await Promise.all(chefsPromise);
+    const chefsWithAvatar = await Promise.all(chefsPromise);
 
-    return res.render("admin/chefs/index", { chefs: lastAdded });
+    return res.render("admin/chefs/index", { chefs: chefsWithAvatar });
   },
 
   async show(req, res) {
@@ -42,7 +42,7 @@ module.exports = {
     if (!chef) return res.send("Chef not found!");
 
     results = await Recipe.findByChef(chef.id);
-    const recipes = results.rows;
+    let recipes = results.rows;
     
     result = await Chef.files(chef.id);
 
@@ -76,9 +76,9 @@ module.exports = {
       return recipe;
     });
 
-    const lastAdded = await Promise.all(recipesPromise);
+    recipes = await Promise.all(recipesPromise);
 
-    return res.render("admin/chefs/show", { chef, recipes: lastAdded, files });
+    return res.render("admin/chefs/show", { chef, recipes, files });
   },
 
   async create(req, res) {

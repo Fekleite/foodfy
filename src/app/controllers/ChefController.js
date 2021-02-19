@@ -22,15 +22,15 @@ module.exports = {
       return files[0];
     }
 
-    const recipesPromise = chefs.map(async (chef) => {
+    const chefsPromise = chefs.map(async (chef) => {
       chef.avatar = await getImage(chef.id);
 
       return chef;
     });
 
-    const lastAdded = await Promise.all(recipesPromise);
+    const chefsWithAvatar = await Promise.all(chefsPromise);
 
-    return res.render("user/chefs", { chefs: lastAdded });
+    return res.render("user/chefs", { chefs: chefsWithAvatar });
   },
 
   async show(req, res) {
@@ -42,7 +42,7 @@ module.exports = {
     if (!chef) return res.send("Chef not found!");
 
     results = await Recipe.findByChef(chef.id);
-    const recipes = results.rows;
+    let recipes = results.rows;
     
     result = await Chef.files(chef.id);
 
@@ -76,8 +76,8 @@ module.exports = {
       return recipe;
     });
 
-    const lastAdded = await Promise.all(recipesPromise);
+    recipes = await Promise.all(recipesPromise);
 
-    return res.render("user/chef", { chef, recipes: lastAdded, files });
+    return res.render("user/chef", { chef, recipes: recipes, files });
   },
 };
