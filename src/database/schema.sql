@@ -3,7 +3,8 @@ CREATE DATABASE foodfy;
 CREATE TABLE chefs (
   id SERIAL PRIMARY KEY UNIQUE,
   name TEXT,
-  created_at TIMESTAMP DEFAULT (now())
+  created_at TIMESTAMP DEFAULT (now()),
+  updated_at TIMESTAMP DEFAULT (now()),
 );
 
 CREATE TABLE recipes (
@@ -14,6 +15,7 @@ CREATE TABLE recipes (
   preparation TEXT[],
   information TEXT,
   created_at TIMESTAMP DEFAULT (now()),
+  updated_at TIMESTAMP DEFAULT (now()),
   FOREIGN KEY(chef_id) REFERENCES chefs(id)
 );
 
@@ -32,3 +34,21 @@ CREATE TABLE chef_files (
   chef_id INTEGER,
   FOREIGN KEY(chef_id) REFERENCES chefs(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+CREATE FUNCTION trigger_set_timestamp()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updated.at = NOW();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER set_timestamp
+BEFORE UPDATE ON recipes
+FOR EACH ROW
+EXECUTE PROCEDURE trigger_set_timestamp();
+
+CREATE TRIGGER set_timestamp
+BEFORE UPDATE ON chefs
+FOR EACH ROW
+EXECUTE PROCEDURE trigger_set_timestamp();
