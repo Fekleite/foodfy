@@ -33,6 +33,6 @@ module.exports = {
     let lastAdded = await Promise.all(recipesPromise);
     lastAdded = lastAdded.filter((recipe, index) => index > 2 ? false : true);
 
-    return res.render("user/home", { recipes: lastAdded });
+    return res.render("home/index", { recipes: lastAdded });
   }
 };

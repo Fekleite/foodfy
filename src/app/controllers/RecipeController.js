@@ -32,7 +32,7 @@ module.exports = {
 
     const lastAdded = await Promise.all(recipesPromise);
 
-    return res.render("user/recipes", { recipes: lastAdded });
+    return res.render("recipes/list", { recipes: lastAdded });
   },
 
   async show(req, res) {
@@ -54,6 +54,6 @@ module.exports = {
       )}`,
     }));
 
-    return res.render("user/detail", { recipe, chef, files });
+    return res.render("recipes/detail", { recipe, chef, files });
   },
 };

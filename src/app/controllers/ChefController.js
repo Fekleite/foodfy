@@ -30,7 +30,7 @@ module.exports = {
 
     const chefsWithAvatar = await Promise.all(chefsPromise);
 
-    return res.render("user/chefs", { chefs: chefsWithAvatar });
+    return res.render("chefs/list", { chefs: chefsWithAvatar });
   },
 
   async show(req, res) {
@@ -78,6 +78,6 @@ module.exports = {
 
     recipes = await Promise.all(recipesPromise);
 
-    return res.render("user/chef", { chef, recipes: recipes, files });
+    return res.render("chefs/chef", { chef, recipes: recipes, files });
   },
 };

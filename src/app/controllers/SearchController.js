@@ -35,7 +35,7 @@ module.exports = {
   
       const recipes = await Promise.all(recipesPromise);
 
-      return res.render("user/results", { recipes, filter });
+      return res.render("recipes/search", { recipes, filter });
     } catch (error) {
       console.log(`Search error: ${error}`);
     }
