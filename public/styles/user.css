@@ -1,0 +1,41 @@
+.user .form__title {
+  color: #111111;
+
+  font-size: 24px;
+}
+
+.user .form__options button {
+  min-width: 140px;
+  height: 37px;
+}
+
+.user .form__options .form__cancel {
+  margin-left: 16px;
+
+  background: #8A8A8A;
+}
+
+.user .form__content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.user .form__content .form__item {
+  width: 48%;
+  position: relative;
+}
+
+.user .form__content .form__item--check {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.user .form__content .form__item--check input {
+  height: auto;
+}
+
+.user .form__content .form__item--check label {
+  margin: 0 0 0 8px;
+}

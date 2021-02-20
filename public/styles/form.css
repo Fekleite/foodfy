@@ -1,0 +1,259 @@
+.form {
+  margin-top: 20px;
+}
+
+.form__header,
+.detail__header  {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 30px;
+}
+
+.form__save,
+.detail__edit,
+.form__delete, 
+.form__cancel {
+  padding: 9px 20px;
+  border-radius: 4px;
+
+  background: #6558c3;
+  color: #ffffff;
+  
+  
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.form__header h3,
+.detail__header h3 {
+  color: #111111;
+
+  font-size: 24px;
+}
+
+.form__item {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 30px;
+}
+
+.form__item label {
+  margin-bottom: 10px;
+
+  color: #111111;
+
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.form__item input,
+.form__item textarea {
+  height: 48px;
+
+  background: #ffffff;
+
+  padding: 0 16px;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  
+  font-size: 16px;
+
+  outline: none;
+}
+
+.form__item textarea {
+  min-height: 96px;
+
+  padding: 16px;
+
+  resize: vertical;
+}
+
+.form__input--ingredient,
+.form__input--preparation {
+  margin-top: 10px;
+}
+
+.form__input--ingredient input,
+.form__input--preparation  input {
+  width: 100%;
+}
+
+.form__button--add {
+  width: fit-content;
+
+  margin-top: 15px;
+
+  background: transparent;
+  color: #6558c3;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.form__item select {
+  height: 48px;
+
+  padding: 0 16px;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  
+  font-size: 16px;
+
+  outline: none;
+
+  /* permitir estilização no select */
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+
+  /* trazer de volta o ícone lateral */
+  background-color: #fff;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.7em top 50%, 0 0;
+  background-size: 0.65em auto, 100%;
+}
+
+.form__delete {
+  margin-right: 16px;
+
+  background: #dc4747;
+}
+
+form .form__item .photos__container {
+  display: flex;
+}
+
+form .form__item #photos__upload {
+  width: 200px;
+
+  display: block;
+
+  position: relative;
+
+  margin-right: 8px;
+
+  overflow: hidden;
+}
+
+form .form__item #photos__upload input {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  padding: 0;
+
+  overflow: hidden;
+
+  opacity: 0;
+
+  cursor: pointer;
+}
+
+form .form__item .photos__add {
+  width: 150px;
+  height: 150px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0;
+
+  border: 1px solid #dddddd;
+  border-radius: 3.5px;
+}
+
+form .form__item .photos__add i {
+  color: #6558c3;
+
+  font-size: 28px;
+}
+
+form .form__item #photos__preview {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+
+  margin: 0;
+}
+
+form .form__item #photos__preview img {
+  width: 100%;
+  height: 150px;
+
+  border-radius: 4px;
+
+  object-fit: cover;
+}
+
+form .form__item #photos__preview .photo {
+  max-width: 150px;
+
+  position: relative;
+}
+
+form .form__item #photos__preview .photo i {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #e93737;
+
+  font-size: 28px;
+
+  cursor: pointer;
+
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+form .form__item #photos__preview .photo:hover i {
+  opacity: 1;
+}
+
+.form__item .form__error {
+  width: 100%;
+
+  position: absolute;
+  bottom: -25px;
+
+  padding: 8px 16px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+
+  background: #e93737;
+  color: #fff;
+
+  font-size: 12px;
+
+  transition: all 0.3s;
+}
