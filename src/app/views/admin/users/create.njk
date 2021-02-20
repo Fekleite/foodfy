@@ -1,0 +1,46 @@
+{% extends "layout-admin.njk" %}
+
+{% block head %}
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+{% endblock head %}
+
+{% block content %}
+  <main>
+    <section class="user">
+      <form action="/admin/users" method="post">
+        <div class="form__header">
+          <h2 class="form__title">Criar Usuário</h2>
+
+          <div class="form__options">
+            <button type="submit" class="form__save">Salvar</button>
+
+            <button class="form__cancel">Cancelar</button>
+          </div>
+        </div>
+
+        <div class="form__content">
+          <div class="form__item">
+            <label for="name">Nome</label>
+            <input type="text" name="name" id="name" placeholder="Digite o nome completo">
+          </div>
+
+          <div class="form__item">
+            <label for="email">Email</label>
+            <input 
+              type="email" 
+              name="email" 
+              id="email" 
+              placeholder="Digite o email"
+              onblur="Validate.apply(this, 'isEmail')"
+            >
+          </div>
+
+          <div class="form__item form__item--check">
+            <input type="checkbox" name="isAdmin" id="isAdmin">
+            <label for="isAdmin">Administrador</label>
+          </div>
+        </div>
+      </form>
+    </section>
+  </main>
+{% endblock content %}

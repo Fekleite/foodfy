@@ -37,7 +37,7 @@ module.exports = {
   },
 
   async create(req, res) {
-    return res.render("admin/users/register");
+    return res.render("admin/users/create");
   },
 
   async post(req, res) {

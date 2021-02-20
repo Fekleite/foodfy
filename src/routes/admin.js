@@ -32,17 +32,17 @@ routes.delete("/chefs", ChefAdminController.delete);
 
 // User routes
 
-routes.get("/users", UserController.index);
+// routes.get("/users", UserController.index);
 routes.get("/users/register", UserController.create);
-routes.get("/users/", UserController.edit);
+// routes.get("/users/update", UserController.edit);
 
-routes.post("/users/register", UserController.post); 
-routes.put("/users", UserController.put); 
-routes.delete("/users", UserController.delete); 
+// routes.post("/users", UserController.post); 
+// routes.put("/users", UserController.put); 
+// routes.delete("/users", UserController.delete); 
 
 // Profile routes
 
-routes.get("/profile", ProfileController.index);
-routes.put("/profile", ProfileController.put);
+// routes.get("/profile", ProfileController.index);
+// routes.put("/profile", ProfileController.put);
 
 module.exports = routes;
