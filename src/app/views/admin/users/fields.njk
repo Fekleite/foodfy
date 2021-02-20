@@ -1,0 +1,26 @@
+<div class="form__item">
+  <label for="name">Nome</label>
+  <input 
+    type="text" name="name" 
+    id="name" 
+    placeholder="Digite o nome completo"
+    value="{{user.name}}"
+  >
+</div>
+
+<div class="form__item">
+  <label for="email">Email</label>
+  <input 
+    type="email" 
+    name="email" 
+    id="email" 
+    placeholder="Digite o email"
+    value="{{user.email}}"
+    onblur="Validate.apply(this, 'isEmail')"
+  >
+</div>
+
+<div class="form__item form__item--check">
+  <input type="checkbox" name="isAdmin" id="isAdmin">
+  <label for="isAdmin">Administrador</label>
+</div>
