@@ -1,0 +1,45 @@
+.chefs {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+
+  margin-top: 16px;
+}
+
+.chef {
+  display: flex;
+  align-items: center;
+}
+
+.chef__avatar {
+  width: 64px;
+  height: 64px;
+
+  margin-right: 20px;
+}
+
+.chef__avatar img {
+  width: 100%;
+  height: 100%;
+
+  border-radius: 50%;
+}
+
+.chef__name {
+  margin-bottom: 6px;
+
+  color: #111111;
+
+  font-size: 18px;
+  font-weight: normal;
+  
+}
+
+.chef__recipes {
+  color: #666666;
+
+  font-size: 14px;
+  font-weight: normal;
+}

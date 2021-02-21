@@ -44,7 +44,7 @@ routes.delete("/users", UserController.delete);
 
 // Profile routes
 
-// routes.get("/profile", ProfileController.index);
+// routes.get("/profile", ProfileController.show);
 // routes.put("/profile", ProfileController.put);
 
 module.exports = routes;

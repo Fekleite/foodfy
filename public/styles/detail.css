@@ -1,0 +1,131 @@
+.detail {
+  margin-top: 20px;
+}
+
+.detail__image {
+  margin-bottom: 50px;
+  width: 100%;
+}
+
+.detail__image img {
+  border-radius: 15px;
+  width: 100%;
+}
+
+.detail h2 {
+  margin-bottom: 4px;
+
+  color: #111111;
+  
+  font-size: 36px;
+  text-align: center;
+}
+
+.detail p {
+  color: #777777;
+  
+  font-size: 20px;
+  text-align: center;
+}
+
+.detail__options {
+  display: flex;
+}
+
+.detail__edit:hover {
+  opacity: 0.6;
+}
+
+.ingredients {
+  margin: 50px 0 39px;
+}
+
+.ingredients__header {
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.ingredients__header span,
+.preparation__header span,
+.information__header span {
+  cursor: pointer;
+}
+
+.ingredients__header h3,
+.preparation__header h3,
+.information__header h3  {
+  color: #111111;
+
+  font-size: 24px;
+}
+
+.ingredients__list,
+.preparation__list,
+.information__text {
+  height: 0;
+
+  opacity: 0;
+
+  overflow: hidden;
+
+  transition: 0.2s;
+}
+
+.accordion {
+  height: 100%;
+
+  opacity: 1;
+}
+
+.ingredients ul,
+.preparation ul {
+  padding-left: 24px;
+  
+  color: #444444;
+
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.preparation {
+  margin-bottom: 47px;
+}
+
+.preparation__header,
+.information__header {
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.information {
+  margin-bottom: 50px;
+}
+
+.information p {
+  color: #444444;
+  
+  font-size: 18px;
+  line-height: 28px;
+  text-align: left;
+  white-space: pre-line;
+}
+
+.title {
+  margin-bottom: 30px;
+}
+
+.detail__image-chef {
+  width: 240px;
+
+  margin: 50px auto;
+}
+
+.detail__image-chef img {
+  width: 100%;
+  
+  border-radius: 50%;
+}
