@@ -36,11 +36,11 @@ routes.delete("/chefs", ChefAdminController.delete);
 
 routes.get("/users", UserController.index);
 routes.get("/users/register", UserController.create);
-// routes.get("/users/update", UserController.edit);
+routes.get("/users/:id/update", UserController.edit);
 
 routes.post("/users/register", UserValidator.post, UserController.post); 
-// routes.put("/users", UserController.put); 
-// routes.delete("/users", UserController.delete); 
+routes.put("/users", UserController.put); 
+routes.delete("/users", UserController.delete); 
 
 // Profile routes
 

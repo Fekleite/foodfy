@@ -3,14 +3,12 @@
 {% block content %}
   <main>
     <section class="user">
-      <form action="/admin/users/register" method="post">
+      <form action="/admin/users?_method=PUT" method="post">
         <div class="form__header">
-          <h2 class="form__title">Criar Usuário</h2>
+          <h2 class="form__title">Atualizar Usuário</h2>
 
           <div class="form__options">
             <button type="submit" class="form__save">Salvar</button>
-
-            <a href="/admin/users" class="form__cancel">Cancelar</a>
           </div>
         </div>
 

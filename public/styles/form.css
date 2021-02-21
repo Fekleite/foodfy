@@ -31,6 +31,10 @@
   transition: opacity 0.3s ease-in-out;
 }
 
+.form__cancel {
+  padding: 9px 38px;
+}
+
 .form__header h3,
 .detail__header h3 {
   color: #111111;

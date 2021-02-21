@@ -1,4 +1,5 @@
-.user .form__title {
+.user .form__title,
+.user .user__title {
   color: #111111;
 
   font-size: 24px;
@@ -38,4 +39,86 @@
 
 .user .form__content .form__item--check label {
   margin: 0 0 0 8px;
+}
+
+.user .user__header {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0;
+}
+
+.user .users__link {
+  width: 140px;
+  height: 37px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 4px;
+
+  background: #7159C1;
+  color: #ffffff;
+
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.user .user__content {
+  width: 100%;
+  height: auto;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 52px;
+
+  margin-top: 64px;
+}
+
+.user .user__name {
+  margin-bottom: 4px;
+
+  color: #111111;
+
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.user .user__email {
+  color: #777777;
+
+  font-size: 14px;
+}
+
+.user .user__options {
+  display: flex;
+  align-items: center;
+
+  margin-top: 16px;
+}
+
+.user .user__edit {
+  color: #6558C3;
+
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.user .user__remove {
+  border: none;
+  margin-left: 16px;
+
+  background: transparent;
+  color: #F55A5A;
+
+  font-size: 14px;
+  font-weight: bold;
+
+  cursor: pointer;
 }

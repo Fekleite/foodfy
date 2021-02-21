@@ -21,6 +21,17 @@
 </div>
 
 <div class="form__item form__item--check">
-  <input type="checkbox" name="isAdmin" id="isAdmin">
+  <input 
+    type="checkbox" 
+    name="isAdmin" 
+    id="isAdmin" 
+    {% if user.is_admin %}
+      checked="checked"
+    {% endif %}
+  >
   <label for="isAdmin">Administrador</label>
 </div>
+
+{% if user.id %}
+  <input type="hidden" name="id" value="{{user.id}}">
+{% endif %}
