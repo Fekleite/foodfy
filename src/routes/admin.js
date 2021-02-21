@@ -34,7 +34,7 @@ routes.delete("/chefs", ChefAdminController.delete);
 
 // User routes
 
-// routes.get("/users", UserController.index);
+routes.get("/users", UserController.index);
 routes.get("/users/register", UserController.create);
 // routes.get("/users/update", UserController.edit);
 
