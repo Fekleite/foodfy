@@ -8,7 +8,7 @@ const ChefAdminController = require("../app/controllers/ChefAdminController");
 const UserController = require("../app/controllers/UserController");
 const ProfileController = require("../app/controllers/ProfileController");
 
-const UserValidator = require("../app/validators/user");
+const Validator = require("../app/validators/user");
 
 // Recipes routes
 
@@ -38,8 +38,8 @@ routes.get("/users", UserController.index);
 routes.get("/users/register", UserController.create);
 routes.get("/users/:id/update", UserController.edit);
 
-routes.post("/users/register", UserValidator.post, UserController.post); 
-routes.put("/users", UserController.put); 
+routes.post("/users/register", Validator.post, UserController.post); 
+routes.put("/users", Validator.put, UserController.put); 
 routes.delete("/users", UserController.delete); 
 
 // Profile routes

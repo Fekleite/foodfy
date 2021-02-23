@@ -22,6 +22,10 @@
   background: #DC4747;
 }
 
+.message__container--success {
+  background: #01B12A;
+}
+
 .message__text {
   color: #ffffff;
 

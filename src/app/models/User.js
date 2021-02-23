@@ -61,14 +61,14 @@ module.exports = {
     }
   },
 
-  update(data) {
+  async update(data) {
     try {
       const query = `
         UPDATE users SET
           name=($1),
           email=($2),
           is_admin=($3)
-        WHERE id=$4
+        WHERE id=$4 
       `;
 
       const is_admin = data.isAdmin === "on" ? true : false;
@@ -80,7 +80,8 @@ module.exports = {
         data.id
       ];
 
-      return db.query(query, values);
+      await db.query(query, values);
+      return;
     } catch (error) {
       console.log(error)
     }

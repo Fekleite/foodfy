@@ -14,7 +14,7 @@ module.exports = {
   async post(req, res) {
     const userId = await User.create(req.body)
 
-    req.session.userId = userId
+    // req.session.userId = userId
 
     return res.redirect("/admin/users");
   },
@@ -28,9 +28,18 @@ module.exports = {
   },
 
   async put(req, res) {
-    await User.update(req.body)
+    try {
+      await User.update(req.body)
 
-    return res.redirect("/admin/users");
+      return res.redirect("/admin/users");
+
+    } catch (error) {
+      console.log(error);
+
+      res.render("admin/users/edit", {
+        error: "Algum erro aconteceu!"
+      })
+    }
   },
 
   async delete(req, res) {
